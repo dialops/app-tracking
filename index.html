@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WPN — позиции по бренду «WPN»</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:28px 20px 48px; background:#f7f8fa; color:#16181d;
+    font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  h1 { font-size:21px; margin:0 0 3px; letter-spacing:-.015em; }
+  .sub { color:#6b7280; font-size:13px; margin-bottom:22px; }
+  .card { background:#fff; border:1px solid #e6e8ec; border-radius:12px; padding:18px 20px; margin-bottom:16px; }
+  .card h2 { font-size:14px; margin:0 0 12px; font-weight:600; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  .kpi { border:1px solid #e6e8ec; border-radius:10px; padding:12px 13px; }
+  .kpi .lbl { font-size:11px; color:#6b7280; text-transform:uppercase; letter-spacing:.04em; }
+  .kpi .val { font-size:27px; font-weight:650; margin-top:3px; letter-spacing:-.02em; }
+  .kpi .val small { font-size:13px; font-weight:500; color:#9ca3af; }
+  .kpi .dlt { font-size:12px; margin-top:2px; }
+  .kpi .rat { font-size:12px; margin-top:7px; padding-top:7px; border-top:1px solid #f1f3f5; color:#4b5563; }
+  .none { color:#b9bec7; }
+  .star { color:#f59e0b; }
+  .up { color:#15803d; } .down { color:#b91c1c; } .flat { color:#9ca3af; }
+  .chartbox { height:270px; position:relative; margin-top:14px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid #eef0f3; }
+  th { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:#6b7280; font-weight:600; }
+  td.n { text-align:right; font-variant-numeric:tabular-nums; }
+  .muted { color:#b9bec7; }
+  .foot { font-size:11.5px; color:#9ca3af; margin-top:8px; line-height:1.45; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>WPN — позиции по брендовому запросу «WPN»</h1>
+  <div class="sub" id="sub"></div>
+  <div id="root"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
+<script>
+const ROWS = [{"date": "2026-08-03", "store": "android", "country": "by", "rank": 2, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-03", "store": "android", "country": "kz", "rank": 1, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-03", "store": "android", "country": "ru", "rank": 5, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-03", "store": "android", "country": "ua", "rank": 2, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-03", "store": "android", "country": "us", "rank": 1, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-03", "store": "ios", "country": "by", "rank": 11, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-03", "store": "ios", "country": "kz", "rank": 3, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-03", "store": "ios", "country": "ua", "rank": 4, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-03", "store": "ios", "country": "us", "rank": 19, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "android", "country": "by", "rank": 1, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "android", "country": "kz", "rank": 1, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "android", "country": "ru", "rank": 4, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "android", "country": "ua", "rank": 2, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "android", "country": "us", "rank": 1, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "ios", "country": "by", "rank": 11, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "ios", "country": "kz", "rank": 3, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "ios", "country": "ua", "rank": 4, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-04", "store": "ios", "country": "us", "rank": 21, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-06", "store": "android", "country": "by", "rank": 2, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-06", "store": "android", "country": "kz", "rank": 2, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-06", "store": "android", "country": "ru", "rank": 5, "rating": 4.0, "ratings": 15, "reviews": 6}, {"date": "2026-08-06", "store": "android", "country": "ua", "rank": 2, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-06", "store": "android", "country": "us", "rank": 5, "rating": null, "ratings": null, "reviews": null}, {"date": "2026-08-06", "store": "ios", "country": "by", "rank": 4, "rating": null, "ratings": 0, "reviews": null}, {"date": "2026-08-06", "store": "ios", "country": "kz", "rank": 3, "rating": 5.0, "ratings": 8, "reviews": null}, {"date": "2026-08-06", "store": "ios", "country": "ua", "rank": 4, "rating": null, "ratings": 0, "reviews": null}, {"date": "2026-08-06", "store": "ios", "country": "us", "rank": 4, "rating": 5.0, "ratings": 3, "reviews": null}];
+const COUNTRY = {"ru": "Россия", "kz": "Казахстан", "ua": "Украина", "by": "Беларусь", "us": "США"};
+const STORE = {"ios": "App Store", "android": "Google Play"};
+const ORDER = {"ios": ["kz", "ua", "by", "us"], "android": ["ru", "kz", "ua", "by", "us"]};
+const PALETTE = ["#2563eb","#0d9488","#d97706","#7c3aed","#dc2626"];
+
+const dates = [...new Set(ROWS.map(r => r.date))].sort();
+const today = dates[dates.length - 1];
+const prevDate = dates.length > 1 ? dates[dates.length - 2] : null;
+const row = (d,s,c) => ROWS.find(x => x.date===d && x.store===s && x.country===c);
+
+function deltaHtml(cur, prev) {
+  if (cur == null) return '<div class="dlt flat">нет в выдаче</div>';
+  if (prev == null) return '<div class="dlt flat">—</div>';
+  const d = prev - cur;
+  if (d === 0) return '<div class="dlt flat">без изменений</div>';
+  return '<div class="dlt ' + (d>0?"up":"down") + '">' + (d>0?"▲ +"+d:"▼ "+d) + '</div>';
+}
+function ratingHtml(r, store) {
+  if (!r) return '<div class="rat"><span class="none">нет данных</span></div>';
+  if (r.rating == null && !r.ratings)
+    return '<div class="rat"><span class="none">' + (store==="android"?"мало оценок":"оценок нет") + '</span></div>';
+  let s = '<div class="rat">';
+  if (r.rating != null) s += '<span class="star">★</span> ' + r.rating.toFixed(1) + ' · ';
+  s += (r.ratings != null ? r.ratings : 0) + ' оц.';
+  if (r.reviews != null) s += ' · ' + r.reviews + ' отз.';
+  return s + '</div>';
+}
+
+let html = "";
+["ios","android"].forEach(store => {
+  const present = ORDER[store].filter(c => ROWS.some(r => r.store===store && r.country===c));
+  if (!present.length) return;
+  html += '<div class="card"><h2>' + STORE[store] + '</h2><div class="grid">';
+  present.forEach(c => {
+    const cur = row(today,store,c), prev = prevDate ? row(prevDate,store,c) : null;
+    const rk = cur ? cur.rank : null;
+    html += '<div class="kpi"><div class="lbl">' + COUNTRY[c] + '</div><div class="val">' +
+      (rk==null ? '<small>вне топа</small>' : "#"+rk) + '</div>' +
+      deltaHtml(rk, prev?prev.rank:null) + ratingHtml(cur,store) + '</div>';
+  });
+  html += '</div><div class="chartbox"><canvas id="ch-'+store+'"></canvas></div></div>';
+});
+
+html += '<div class="card"><h2>Все замеры</h2><table><thead><tr><th>Дата</th><th>Стор</th><th>Страна</th>' +
+  '<th class="n">Позиция</th><th class="n">Оценка</th><th class="n">Оценок</th><th class="n">Отзывов</th>' +
+  '</tr></thead><tbody>';
+ROWS.slice().sort((a,b)=> a.date<b.date?1:a.date>b.date?-1:0).forEach(r => {
+  const dash = '<span class="muted">—</span>';
+  html += '<tr><td>'+r.date+'</td><td>'+STORE[r.store]+'</td><td>'+(COUNTRY[r.country]||r.country)+
+    '</td><td class="n">'+(r.rank==null?'<span class="muted">вне топа</span>':"#"+r.rank)+
+    '</td><td class="n">'+(r.rating==null?dash:r.rating.toFixed(1))+
+    '</td><td class="n">'+(r.ratings==null?dash:r.ratings)+
+    '</td><td class="n">'+(r.reviews==null?dash:r.reviews)+'</td></tr>';
+});
+html += '</tbody></table><div class="foot">App Store: «оценок» — число оценок в этом сторфронте; ' +
+  'текст отзывов Apple через публичный API не отдаёт. ' +
+  'Google Play показывает оценки по стране только там, где их набралось достаточно.</div></div>';
+
+document.getElementById("root").innerHTML = html;
+document.getElementById("sub").textContent = "Последний замер " + today + " · обновляется раз в сутки";
+
+["ios","android"].forEach(store => {
+  const el = document.getElementById("ch-"+store);
+  if (!el) return;
+  const present = ORDER[store].filter(c => ROWS.some(r => r.store===store && r.country===c));
+  new Chart(el, {
+    type: "line",
+    data: {
+      labels: dates,
+      datasets: present.map((c,i) => ({
+        label: COUNTRY[c],
+        data: dates.map(d => { const r = row(d,store,c); return r ? r.rank : null; }),
+        borderColor: PALETTE[i%PALETTE.length], backgroundColor: PALETTE[i%PALETTE.length],
+        tension:.25, borderWidth:2, pointRadius:3, spanGaps:true
+      }))
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:"index", intersect:false },
+      scales:{
+        y:{ reverse:true, min:1, title:{display:true,text:"позиция (1 = верх выдачи)"},
+            ticks:{precision:0}, grid:{color:"#eef0f3"} },
+        x:{ grid:{display:false} }
+      },
+      plugins:{ legend:{ position:"bottom", labels:{boxWidth:10,boxHeight:10,font:{size:11}} } }
+    }
+  });
+});
+</script>
+</body>
+</html>
